@@ -1,6 +1,7 @@
 import os
 from cryptography.fernet import Fernet
 
+
 class Decrypt:
     def __init__(self, key_path, file_list, secret):
         self.key_path = key_path

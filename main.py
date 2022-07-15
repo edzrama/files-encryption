@@ -10,10 +10,8 @@ key_file = f"{path}binary_key.key"
 
 # get all files inside the directory and subdirectories
 for subdir, dirs, files in os.walk(path):
-    for file in files:
-        if os.path.join(subdir, file) == key_file:
-            continue
-        file_paths.append(os.path.join(subdir, file))
+    file_paths.extend(os.path.join(subdir, file) for file in files if os.path.join(subdir, file) != key_file)
+
 encrypt = Encrypt(key_path=key_file, file_list=file_paths)
 decrypt = Decrypt(key_path=key_file,file_list=file_paths,secret=secret_phrase)
 
